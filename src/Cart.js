@@ -3,7 +3,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import Input from "./Input.js";
 import Button from "./Button.js";
 
-// TODO: Replace with your own publishable key
 const stripeLoadedPromise = loadStripe("pk_test_51KWzzXG8E5YxacPx7pi8N3wIEVNqXFudlHYKPT6WT1UaDMl2PA2nBeBv6iGqSYo66i6dXy8IUTnArRdD4lJzGK8a00biLQSoDW");
 
 export default function Cart({ cart }) {
@@ -96,10 +95,6 @@ export default function Cart({ cart }) {
                 Enter your email and then click on pay and your products will be
                 delivered to you on the same day!
                 <br />
-                <em>
-                  Enter your own Stripe Publishable Key in Cart.js for the
-                  checkout to work
-                </em>
               </p>
               <Input
                 placeholder="Email"
@@ -108,7 +103,7 @@ export default function Cart({ cart }) {
                 type="email"
                 required
               />
-              <Button type="submit">Pay</Button>
+              <Button type="submit" onSubmit={handleFormSubmit}>Pay</Button>
             </form>
           </>
         )}
