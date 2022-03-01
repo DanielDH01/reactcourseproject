@@ -32,7 +32,7 @@ export default function Products(props) {
           "description":"1 piece of tomato",
           "id":3,
           "image":"https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto/v1607769454/react-tutorial/products/final/tomato.png",
-          "name":"Tomato","price":2.75,"price_id":"price_1HxW4YGuhXEITAutgcWugXH7"
+          "name":"Tomato","price":2.75,"price_id":"price_1KYTB5G8E5YxacPxXxS1Wq78"
         },
         {
           "description":"500g pineapple",

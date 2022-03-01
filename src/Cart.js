@@ -5,13 +5,14 @@ import Button from "./Button.js";
 
 const stripeLoadedPromise = loadStripe("pk_test_51KWzzXG8E5YxacPx7pi8N3wIEVNqXFudlHYKPT6WT1UaDMl2PA2nBeBv6iGqSYo66i6dXy8IUTnArRdD4lJzGK8a00biLQSoDW");
 
-export default function Cart({ cart }) {
+export default function Cart({ cart , setCart }) {
   const totalPrice = cart.reduce(
     (total, product) => total + product.price * product.quantity,
     0
   );
 
   const [email, setEmail] = useState("");
+  const currentUrl = window.location.href.split('/cart')[0];
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -25,8 +26,8 @@ export default function Cart({ cart }) {
         .redirectToCheckout({
           lineItems: lineItems,
           mode: "payment",
-          successUrl: "https://superm.react-tutorial.app/",
-          cancelUrl: "https://superm.react-tutorial.app/",
+          successUrl: currentUrl,
+          cancelUrl: currentUrl,
           customerEmail: email,
         })
         .then((response) => {
@@ -38,6 +39,7 @@ export default function Cart({ cart }) {
           console.log(error);
         });
     });
+    setCart([]);
   }
 
   return (
@@ -95,6 +97,7 @@ export default function Cart({ cart }) {
                 Enter your email and then click on pay and your products will be
                 delivered to you on the same day!
                 <br />
+                Use the test Credit card: 4242 4242 4242 4242
               </p>
               <Input
                 placeholder="Email"

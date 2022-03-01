@@ -80,7 +80,7 @@ function App() {
             <ProductDetails onProductAdd={handleProductAdd} />
           </Route>
           <Route exact path="/cart">
-            <Cart cart={cart} />
+            <Cart cart={cart} setCart={setCart}/>
           </Route>
         </Switch>
       </div>
