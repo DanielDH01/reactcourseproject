@@ -5,7 +5,7 @@ import Button from "./Button.js";
 
 const stripeLoadedPromise = loadStripe("pk_test_51KWzzXG8E5YxacPx7pi8N3wIEVNqXFudlHYKPT6WT1UaDMl2PA2nBeBv6iGqSYo66i6dXy8IUTnArRdD4lJzGK8a00biLQSoDW");
 
-export default function Cart({ cart , setCart }) {
+export default function Cart({ cart , setCart, onProductDelete }) {
   const totalPrice = cart.reduce(
     (total, product) => total + product.price * product.quantity,
     0
@@ -67,6 +67,15 @@ export default function Cart({ cart , setCart }) {
                   return (
                     <tr key={product.id}>
                       <td>
+                        <div>
+                          <Button
+                            outline
+                            onClick={() => onProductDelete(product.id)}
+                            className="product-delete"
+                          >
+                            x
+                          </Button>
+                        </div>
                         <img
                           src={product.image}
                           width="30"
